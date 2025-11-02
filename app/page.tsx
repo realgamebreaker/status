@@ -1,6 +1,5 @@
 import { ButtonRowBottom } from "@/components/ButtonRowBottom";
-import { SharedToggle } from "@/components/SharedToggle";
-import { TimeDisplay } from "@/components/TimeDisplay";
+import { Content } from "@/components/Content";
 import { Heading } from "@/components/ui/Heading";
 
 interface HomeProps {
@@ -13,10 +12,7 @@ export default async function Home({ searchParams }: HomeProps) {
 	return (
 		<div className="flex flex-col min-h-screen items-center justify-between font-sans bg-[#13131C] gap-4 p-8">
 			<Heading>Status</Heading>
-			<div className="flex flex-col items-center">
-				<SharedToggle />
-				<TimeDisplay />
-			</div>
+			<Content />
 			<ButtonRowBottom helpImAtWork={safe} />
 		</div>
 	);
