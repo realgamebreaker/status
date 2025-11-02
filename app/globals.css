@@ -123,3 +123,54 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+html {
+  overflow-y: scroll;
+  -ms-overflow-style: none;   /* IE and Edge */
+  scrollbar-width: none;      /* Firefox */
+}
+
+/* Custom animations for sliding numbers */
+@keyframes slide-out-up {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-out-down {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-in-up {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-down {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

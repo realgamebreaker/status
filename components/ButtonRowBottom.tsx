@@ -16,10 +16,10 @@ import {
 	DrawerTrigger,
 	drawerTriggerClassname,
 } from "./ui/drawer";
+import { Goon } from "./prettyanimegirls";
 
-export function ButtonRowBottom() {
+export function ButtonRowBottom({helpImAtWork}: {helpImAtWork?: boolean}) {
 	const [isKilling, setIsKilling] = React.useState(false);
-
 	const killServer = async () => {
 		try {
 			setIsKilling(true);
@@ -49,20 +49,21 @@ export function ButtonRowBottom() {
 
 	return (
 		<div className="w-full flex justify-center items-center gap-4">
-			<Drawer>
+            {!helpImAtWork && <Goon></Goon>}  {/* Not seriously. Images are all sfw I swear */}
+            <Drawer>
 				<DrawerTrigger className={drawerTriggerClassname}>
 					{" "}
 					<XIcon />
-					Kill Server
+					{helpImAtWork ? "Kill Server" : "KYS"}
 				</DrawerTrigger>
 				<DrawerContent className="h-max">
 					<DrawerHeader>
 						<DrawerTitle className="font-heading text-3xl">
-							Kill Server?
+							Kill {!helpImAtWork ? "Your" : ""} Server?
 						</DrawerTitle>
 						<DrawerDescription>
 							This will shut down the server process. You will have to restart
-							it manually.
+							it manually. {!helpImAtWork && "(You thought it meant something different, didn't you?)"}
 						</DrawerDescription>
 					</DrawerHeader>
 					<DrawerFooter className="gap-4">

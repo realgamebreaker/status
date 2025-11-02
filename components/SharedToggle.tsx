@@ -2,23 +2,27 @@
 import { ArrowLeftRightIcon } from "lucide-react";
 import Button from "./ui/Button";
 import { Heading } from "./ui/Heading";
-import { useRealtimeToggle } from "../hooks/useRealtimeToggle";
+import { useSharedState } from "../hooks/useSharedState";
 
-export function SwitchButton() {
+export function SharedToggle() {
 	const {
-		isToggled,
+		value: isToggled,
+		setValue: setToggled,
 		isLoading,
 		isOptimistic,
 		connectionStatus,
 		isOnline,
 		lastError,
-		toggle,
-	} = useRealtimeToggle();
+	} = useSharedState<boolean>("toggle", false, { optimistic: true, debounceMs: 300 });
+
+	const handleToggle = async () => {
+		await setToggled(!isToggled);
+	};
 
 	if (isLoading) {
 		return (
 			<div className="flex flex-col items-center justify-center gap-4">
-				<Heading small>Loading...</Heading>
+				<Heading small>Loading State...</Heading>
 			</div>
 		);
 	}
@@ -63,7 +67,7 @@ export function SwitchButton() {
 					isOptimistic ? "opacity-70" : "opacity-100"
 				}`}
 			>
-				<Button onClick={toggle} disabled={!isOnline}>
+				<Button onClick={handleToggle} disabled={!isOnline}>
 					{" "}
 					<span
 						className={`transition-transform duration-300 ease-in-out inline-flex`}

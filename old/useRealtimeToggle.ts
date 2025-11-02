@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { getRealtimeToggleService } from "../lib/realtimeToggleService";
+import { getRealtimeToggleService } from "./realtimeToggleService";
 
 type UseRealtimeToggleReturn = {
 	isToggled: boolean;
